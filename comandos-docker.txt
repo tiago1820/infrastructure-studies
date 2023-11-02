@@ -1,0 +1,77 @@
+1- Para verificar la version de Docker:
+docker --version
+
+2-Para iniciar el servicio Docker:
+sudo systemctl start docker
+
+3- Para verificar que Docker se haya iniciado correctamente:
+sudo systemctl status docker
+
+4- Para ver las imagenes y contenedores que hay en Docker:
+docker images
+
+5- Para ver los contenedores en ejecucion:
+docker ps
+
+6-Para ver todos los contenedores(incluyendo los detenidos):
+docker ps -a
+
+7- Para crear un contenedor con Debian y correr una API hecha en Nodejs:
+
+  7.1- Crea un archivo llamado 'Dockerfile' (sin extension) y agrega el siguiente contenido:
+  FROM debian
+
+# Instala Node.js y npm
+RUN apt-get update && \
+    apt-get install -y nodejs npm
+
+# Copia los archivos de tu API al contenedor
+WORKDIR /app
+COPY ..
+
+# Instala las dependencias de tu API
+RUN npm install
+
+# Expone el puerto en el que tu API escucha
+EXPOSE 3001
+
+# Comando para iniciar tu API
+CMD ["npm", "start"]
+
+  7.2- Para construir la imagen:
+  docker build -t mi-api .
+
+  7.3- Para ejecutar el contenedor:
+  docker run -p 3001:3001 mi-api
+
+8- Para verificar que el contenedor esta en ejecucion:
+docker ps
+
+9- Para iniciar el contenedor 
+docker start <ID_DEL_CONTENEDOR>
+
+10.Para verificar si hay errores en la consola del contenedor:
+docker logs <ID_DEL_CONTENEDOR>
+
+11- Para detener el contenedor:
+docker stop <ID_DEL_CONTENEDOR>
+
+12- Para detener todos los contenedores en ejecucion:
+docker stop $(docker ps -q)
+
+13- PAra encontrar el ID del proceso que esta utilizando mi puerto y matarlo:
+sudo lsof -i :3001
+sudo kill <ID_DEL_PROCESO>
+
+14- PAra reiniciar el contenedor:
+docker restart <ID_O_NOMBRE_DEL_CONTENEDOR>
+
+15- Para ver el log del servidor:
+docker logs <ID_O_NOMBRE_DEL_CONTENEDOR>
+
+16. PAra apagar el contenedor:
+docker stop ID
+
+
+
+
