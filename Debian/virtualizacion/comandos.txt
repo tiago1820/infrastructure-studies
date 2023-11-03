@@ -1,0 +1,34 @@
+1. Para saber si el procesador tiene soporte para la tecnologia de virtualizacion Intel VT-x:
+grep vmx /proc/cpuinfo
+
+2. Para saber si el procesador tiene soporte para la tecnologia de virtualizacion AMD-V
+grep svm /proc/cpuinfo
+
+3.Para instalar virt-manager:
+apt install virt-manager
+
+4. Para instalar virsh:
+apt install virsh
+
+5. Para iniciar el servicio de administracion de maquinas virtuales Libvirt:
+systemctl start libvirtd.service
+
+6. Para obtener informacion sobre el estado actual del servicio de administracion de maquinas virtuales Libvirt:
+systemctl status libvirtd.service
+
+7. Para detener el servicio de administracion de maquinas virtuales Libvirt:
+systemctl stop libvirtd.service
+
+8. Para obtener informacion detallada sobre la distribucion de Linux y su version:
+lsb_release -a
+
+9. Para agregar el usuario "tiago" al grupo "libvirt" en el sistema:
+adduser tiago libvirt
+
+10. Para obtener informacion sobre el usuario llamado "tiago" en el sistema:
+id tiago
+
+
+
+
+
